@@ -1,8 +1,10 @@
 "use strict";
 exports.__esModule = true;
 var electron_1 = require("electron");
+var Store = require("electron-store");
 var path = require("path");
 var ElectronPath = path.join(__dirname, "..");
+var store = new Store();
 var windows = [];
 console.log("Starting Electron...");
 require('electron-reload')(ElectronPath, {
@@ -44,12 +46,19 @@ function createWindow() {
             preload: path.join(__dirname, "preload.js")
         },
         width: 800,
-        title: "peer-to-peer Downloader"
+        title: "peer-to-peer Downloader",
+        icon: "./icon.ico"
     });
     mainWindow.setMenuBarVisibility(false);
     windows.push(mainWindow);
+    var host = store.get("host");
+    if (host == undefined) {
+        mainWindow.loadFile(path.join(ElectronPath, "HTML/setup.html"));
+    }
+    else {
+        mainWindow.loadFile(path.join(ElectronPath, "HTML/index.html"));
+    }
     // and load the index.html of the app.
-    mainWindow.loadFile(path.join(ElectronPath, "HTML/index.html"));
 }
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.

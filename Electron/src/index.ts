@@ -1,6 +1,9 @@
 import { app, BrowserWindow, clipboard, dialog, FileFilter, ipcMain, SaveDialogSyncOptions } from "electron";
+import * as Store from "electron-store";
 import * as path from "path";
 let ElectronPath = path.join(__dirname, "..")
+
+const store = new Store();
 
 let windows : BrowserWindow[] = [];
 
@@ -56,15 +59,22 @@ function createWindow() {
       preload: path.join(__dirname, "preload.js"),
     },
     width: 800,
-    title: "peer-to-peer Downloader"
+    title: "peer-to-peer Downloader",
+    icon: "./icon.ico"
   });
 
   mainWindow.setMenuBarVisibility(false);
 
   windows.push(mainWindow);
 
+  let host = store.get("host");
+  if(host == undefined) {
+    mainWindow.loadFile(path.join(ElectronPath, "HTML/setup.html"));
+  } else {
+    mainWindow.loadFile(path.join(ElectronPath, "HTML/index.html"));
+  }
+
   // and load the index.html of the app.
-  mainWindow.loadFile(path.join(ElectronPath, "HTML/index.html"));
 }
 
 // This method will be called when Electron has finished

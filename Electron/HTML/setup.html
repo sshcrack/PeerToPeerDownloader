@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Setup</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; connect-src *; script-src 'unsafe-inline' https://*.bootstrapcdn.com https://*.jquery.com https://*.jsdelivr.net https://*.fontawesome.com file://*; style-src * 'unsafe-inline'; img-src *">
+  <link rel="stylesheet" href="./css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/index.css">
+  <script src="./js/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+  <script src="./js/popper.min.js" crossorigin="anonymous"></script>
+  <script src="./js/bootstrap.min.js" crossorigin="anonymous"></script>
+  <script src="./js/fitty.js"></script>
+  <script src="https://kit-pro.fontawesome.com/releases/v5.10.1/js/pro.min.js" data-auto-fetch-svg="" async=""></script>
+</head>
+
+<body>
+  <script src="../dist/renderer.js"></script>
+
+  <div class="container d-flex my-auto flex-column justify-content-center my-auto" style="width: 100vw; height: 100vh;">
+    <div>
+        <div class="input-group mb-3">
+        <input type="text" class="form-control my-auto d-flex justify-content-center" placeholder="Host:Port" aria-label="Host:Port" aria-describedby="button-addon2" id="host" value="localhost:8080">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary my-auto d-flex justify-content-center" type="button" id="pasteClipboard">Paste from clipboard</button>
+        </div>
+        </div>
+
+        <button type="button" class="btn btn-dark justify-content-center d-flex mx-auto" id="setHost">Set host</button>
+    </div>
+  </div>
+
+</body>
+
+</html>

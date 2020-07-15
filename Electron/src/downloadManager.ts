@@ -3,11 +3,12 @@ import * as http from "http";
 import * as https from "https";
 import * as fs from "fs";
 import * as events from "events";
+import * as Storage from "electron-store";
 
 
 export class DownloadManager {
     private file : File;
-    private serverHost = "192.168.178.49:8080";
+    private serverHost = new Storage().get("host");
     private emitter = new events.EventEmitter();
     public paused = false;
     private wasPaused = false;

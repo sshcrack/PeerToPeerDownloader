@@ -41,9 +41,10 @@ var http = require("http");
 var https = require("https");
 var fs = require("fs");
 var events = require("events");
+var Storage = require("electron-store");
 var DownloadManager = /** @class */ (function () {
     function DownloadManager(file) {
-        this.serverHost = "192.168.178.49:8080";
+        this.serverHost = new Storage().get("host");
         this.emitter = new events.EventEmitter();
         this.paused = false;
         this.wasPaused = false;

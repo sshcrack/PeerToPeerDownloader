@@ -1,5 +1,5 @@
 {
-  "name": "server-downloader",
+  "name": "peer-to-peer-downloader",
   "version": "1.0.0",
   "description": "A client to download from a host (Peer to Perr)",
   "main": "dist/index.js",
@@ -26,6 +26,7 @@
     "assert": "^2.0.0",
     "async": "^3.2.0",
     "electron-reload": "^1.5.0",
+    "electron-store": "^5.2.0",
     "html-entities": "^1.3.1",
     "jquery": "^3.5.1",
     "spectron": "^11.1.0"
