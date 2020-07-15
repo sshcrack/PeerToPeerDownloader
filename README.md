@@ -1,5 +1,7 @@
 # Peer to Peer Downloader
 
+![CI](https://github.com/sshcrack/PeerToPeerDownloader/workflows/CI/badge.svg)
+
 ## Introduction
 
 > A downloader based on Peer to Peer
