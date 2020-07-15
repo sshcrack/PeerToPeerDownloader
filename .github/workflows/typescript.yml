@@ -25,6 +25,7 @@ jobs:
     # Runs a set of commands using the runners shell
     - name: Compile Typescript
       run: |
+        npm i
         cd Electron && npm run build
         cd ..
         cd Server && npm run build
