@@ -34,7 +34,3 @@ jobs:
         cd ..
         cd Server && npm run build
     
-    - name: Testing if Electron Application is visible
-      run: |
-        npm test
-    
