@@ -2,34 +2,20 @@
   "name": "server-downloader",
   "version": "1.0.0",
   "description": "A client to download from a host (Peer to Perr)",
-<<<<<<< HEAD
   "main": "dist/index.js",
-=======
-  "main" : "dist/index.js",
->>>>>>> 8d43e9f4c894bc034802f38df57d83d9ace7cf82
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
     "lint": "tslint -c tslint.json -p tsconfig.json",
     "start": "npm run build && electron ./dist/main.js",
-<<<<<<< HEAD
     "package": "cd packaged && electron-packager ../ --overwrite --all"
-=======
-    "package" : "cd packaged && electron-packager ../ --overwrite --all"
->>>>>>> 8d43e9f4c894bc034802f38df57d83d9ace7cf82
   },
   "author": "sshcraCK",
   "license": "ISC",
   "devDependencies": {
-<<<<<<< HEAD
     "electron": "^9.1.0",
     "tslint": "^6.1.2",
     "typescript": "^3.9.6"
-=======
-    "electron": "^9.0.4",
-    "tslint": "^6.1.2",
-    "typescript": "^3.9.5"
->>>>>>> 8d43e9f4c894bc034802f38df57d83d9ace7cf82
   },
   "dependencies": {
     "@types/async": "^3.2.3",
