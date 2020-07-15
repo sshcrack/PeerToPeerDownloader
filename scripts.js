@@ -6,7 +6,9 @@ const packager = require('electron-packager');
 const chalk = require('chalk');
 const fs = require('fs');
 const meow = require('meow');
-const glob = require('glob');
+const zipDir = require('zip-dir');
+const targz = require('targz');
+const async = require('async');
 const commandExists = require("command-exists");
 var isWin = require('os').platform().indexOf('win') > -1;
 
@@ -119,10 +121,48 @@ if(input == "start") {
   });
 }
 
+if(input == "release") {
+  let releaseDir = path.join(process.cwd(), "Release");
+  let electronPackaged = path.join(process.cwd(), "Electron", "packaged");
+  if(!fs.existsSync(releaseDir)) fs.mkdirSync(releaseDir);
+
+  let dirs = fs.readdirSync(electronPackaged);
+
+  let spinner = getSpinner("Archiving Packages...");
+  spinner.start();
+
+  let run = async () => {
+    for(let i = 0; i < dirs.length; i++) {
+      let dir = dirs[i];
+
+      let dirPath = path.join(electronPackaged, dir);
+      let outFile = path.join(releaseDir, dir);
+
+
+      spinner.text = `Archiving Package ${dir}`;
+      if(dir.indexOf("-win") != -1) {
+        await DirToZip(dirPath, outFile + ".zip");
+      } else {
+        await TarCompress(dirPath, outFile + ".tar.gz");
+      }
+    }
+
+    let serverDir = path.join(process.cwd(), "Server");
+
+    spinner.text = "Archiving the Server...";
+    TarCompress(serverDir, path.join(releaseDir, "Server.tar.gz")).then(res => {
+      spinner.stop();
+      console.log(chalk.cyan("-") + chalk.white(` All files got archived.`));
+    });
+  };
+
+  run();
+}
+
 if(input == "pack") {
   inquirer.prompt([{
     name: "toDeploy",
-    message: "Do you want to be Electron packaged? \r\n Everything in the packaging directory will get deleted.",
+    message: "Do you want to be Electron packaged? \r\n Existing folders could be deleted.",
     type: "confirm"
   }]).then(async answers => {
     let answer = answers.toDeploy;
@@ -143,26 +183,7 @@ if(input == "pack") {
           "all"
         ]
       }]).then(toPackage => {
-
-        let files = glob.sync(electronOut + "**/**");
-
-        let deletingFiles = getSpinner("Deleting files...");
-        deletingFiles.start();
-
-        files.forEach(file => {
-          deletingFiles.text = `Deleting ${file}...`;
-          let stat = fs.statSync(file);
-          if(stat.isFile()) {
-            fs.unlinkSync(file);
-          }
-        });
-
-        deletingFiles.stop();
-
         if(!fs.existsSync(electronOut)) {
-          fs.mkdirSync(electronOut);
-        } else {
-          fs.rmdirSync(electronOut, {recursive: true});
           fs.mkdirSync(electronOut);
         }
 
@@ -174,7 +195,8 @@ if(input == "pack") {
           out: electronOut,
           platform: toPackage.Os,
           arch: "all",
-          icon: "./Electron/icon.ico"
+          icon: "./Electron/icon.ico",
+          overwrite: true
         }).then(() => {
           spinner.stop();
           console.log(chalk.cyan("-") + chalk.white(` Electron was packaged to ` + chalk.green(path.resolve(electronOut))));
@@ -198,6 +220,21 @@ function getSpinner(text) {
   return o;
 }
 
-function existsArray(array, searchFor) {
-  return array.indexOf(searchFor) != -1;
+function DirToZip(src, out) {
+  return new Promise((resolve, reject) => {
+    zipDir(src, {saveTo: out}, (err, buffer) => {
+      resolve(true);
+    });
+  });
+}
+
+function TarCompress (src, out) {
+  return new Promise((resolve, reject) => {
+    targz.compress({
+      src: src,
+      dest: out
+    }, err => {
+      resolve(true);
+    });
+  });
 }

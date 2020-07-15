@@ -46,8 +46,7 @@ function createWindow() {
             preload: path.join(__dirname, "preload.js")
         },
         width: 800,
-        title: "peer-to-peer Downloader",
-        icon: "./icon.ico"
+        title: "peer-to-peer Downloader"
     });
     mainWindow.setMenuBarVisibility(false);
     windows.push(mainWindow);
