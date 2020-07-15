@@ -8,7 +8,8 @@
     "install": "cd Server && npm i && cd .. && cd Electron && npm i",
     "start": "node . start",
     "pack": "node . pack",
-    "update": "npm update && cd Electron && npm update && cd .. && cd Server && npm update"
+    "update": "npm update && cd Electron && npm update && cd .. && cd Server && npm update",
+    "test": "cd Electron && node . test"
   },
   "author": "",
   "license": "ISC",

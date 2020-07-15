@@ -173,8 +173,7 @@ if(input == "pack") {
           dir: electronSource,
           out: electronOut,
           platform: toPackage.Os,
-          arch: "all",
-          quiet: true
+          arch: "all"
         }).then(() => {
           spinner.stop();
           console.log(chalk.cyan("-") + chalk.white(` Electron was packaged to ` + chalk.green(path.resolve(electronOut))));

@@ -43,7 +43,8 @@ function createWindow() {
         webPreferences: {
             preload: path.join(__dirname, "preload.js")
         },
-        width: 800
+        width: 800,
+        title: "peer-to-peer Downloader"
     });
     mainWindow.setMenuBarVisibility(false);
     windows.push(mainWindow);
