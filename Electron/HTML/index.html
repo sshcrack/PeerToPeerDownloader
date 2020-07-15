@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Server Downloader</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; connect-src *; script-src 'unsafe-inline' https://*.bootstrapcdn.com https://*.jquery.com https://*.jsdelivr.net https://*.fontawesome.com file://*; style-src * 'unsafe-inline'; img-src *">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="./js/fitty.js"></script>
+    <script src="https://kit-pro.fontawesome.com/releases/v5.12.1/js/pro.min.js" data-auto-fetch-svg="" async=""></script>
+  </head>
+  <body>
+    <script src="../dist/renderer.js"></script>
+
+    <div id="fileSelect" class="container">
+      <h1 class="display-4">Download from Server</h1>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="File URL" aria-label="File URL" aria-describedby="button-addon2" id="fileUrl">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button" id="pasteClipboard">Paste from clipboard</button>
+        </div>
+      </div>
+
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="File Path" aria-label="File Path" aria-describedby="button-addon2" id="FilePath">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button" id="saveAs">Save as...</button>
+        </div>
+      </div>
+
+      <button type="button" class="btn btn-dark justify-content-center" id="add">Add</button>
+
+      <div class="my-4"></div>
+
+      <ul class="list-group" id="filesList">
+      </ul>
+      <hr>
+
+      <br>
+      <div class="d-flex justify-content-center flex-column" id="downloadProgress">
+        <div class="progress m-auto" id="progressBarParent">
+          <div class="progress-bar" role="progressbar" style="width: 0%;" id="fileProgress"></div>
+        </div>
+        <div class="ml-3"></div>
+        <span class="justify-content-center d-flex" id="downloading"></span>
+      </div>
+
+      <br>
+      <div class="d-flex justify-content-center">
+        <button type="button" class="btn btn-dark justify-content-center d-flex m-auto flex-row" id="download">Download!</button>
+        <button type="button" class="btn btn-dark justify-content-center d-flex m-auto flex-row" id="pause">Pause!</button>
+      </div>
+
+    </div>
+
+
+
+    <!-- Button trigger modal -->
+    <button id="preventClosingButton" type="button" class="btn btn-primary" data-toggle="modal" data-target="#preventClosing" style="display: none !important;"></button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="preventClosing" tabindex="-1" role="dialog" aria-labelledby="preventClosingLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="preventClosingLabel">Do you really want to quit?</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            You are currently downloading files.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary" id="quit">Quit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
