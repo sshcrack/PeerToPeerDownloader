@@ -7,12 +7,8 @@
   "scripts": {
     "install": "cd Server && npm i && cd .. && cd Electron && npm i",
     "start": "node . start",
-<<<<<<< HEAD
     "pack": "node . pack",
     "update": "npm update && cd Electron && npm update && cd .. && cd Server && npm update"
-=======
-    "deploy": "node . pack"
->>>>>>> 8d43e9f4c894bc034802f38df57d83d9ace7cf82
   },
   "author": "",
   "license": "ISC",
