@@ -1,0 +1,24 @@
+{
+  "name": "peer-to-peer-downloader",
+  "version": "1.0.0",
+  "description": "A client & server for downloading files peer-to-peer",
+  "main": "scripts.js",
+  "repository": "https://github.com/sshcrack/PeerToPeerDownloader",
+  "scripts": {
+    "install": "cd Server && npm i && cd .. && cd Electron && npm i",
+    "start": "node . start",
+    "deploy": "node . pack"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "command-exists": "^1.2.9",
+    "electron-packager": "^15.0.0",
+    "glob": "^7.1.6",
+    "inquirer": "^7.3.2",
+    "meow": "^7.0.1",
+    "ora": "^4.0.4",
+    "zip-dir": "^1.0.2"
+  }
+}

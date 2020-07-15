@@ -1,0 +1,31 @@
+#progressBarParent {
+    width: 50%;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+#download, #pause {
+    width: 10rem;
+}
+
+#downloading {
+    font-size: 2.5rem;
+    max-width: 100%;
+}
+
+#filesList li span{
+    font-size: 1.5rem;
+
+}
+
+#downloadProgress {
+    display: none !important;
+}
+
+#fileProgress {
+    transition: none;
+}
+
+.noTransition {
+    transition: none !important;
+}
