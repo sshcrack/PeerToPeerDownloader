@@ -23,9 +23,18 @@ jobs:
     - uses: actions/checkout@v2
 
     # Runs a set of commands using the runners shell
+    - name: Updating Packages
+      run: |
+        npm run update
+      
     - name: Compile Typescript
       run: |
         npm i
         cd Electron && npm run build
         cd ..
         cd Server && npm run build
+    
+    - name: Testing if Electron Application is visible
+      run: |
+        npm test
+    
