@@ -151,19 +151,26 @@ if(input == "pack") {
 
         files.forEach(file => {
           deletingFiles.text = `Deleting ${file}...`;
+<<<<<<< HEAD
           let stat = fs.statSync(file);
           if(stat.isFile()) {
             fs.unlinkSync(file);
           }
+=======
+          fs.unlinkSync(file);
+>>>>>>> 8d43e9f4c894bc034802f38df57d83d9ace7cf82
         });
 
         deletingFiles.stop();
 
         if(!fs.existsSync(electronOut)) {
           fs.mkdirSync(electronOut);
+<<<<<<< HEAD
         } else {
           fs.rmdirSync(electronOut, {recursive: true});
           fs.mkdirSync(electronOut);
+=======
+>>>>>>> 8d43e9f4c894bc034802f38df57d83d9ace7cf82
         }
 
         let spinner = getSpinner("Packaging...");
@@ -175,9 +182,15 @@ if(input == "pack") {
           platform: toPackage.Os,
           arch: "all",
           quiet: true
+<<<<<<< HEAD
         }).then(() => {
           spinner.stop();
           console.log(chalk.cyan("-") + chalk.white(` Electron was packaged to ` + chalk.green(path.resolve(electronOut))));
+=======
+        }, () => {
+          spinner.stop();
+          console.log(chalk.cyan("-") + chalk.white(` Electron was packaged to` + chalk.green(path.resolve(electronOut))));
+>>>>>>> 8d43e9f4c894bc034802f38df57d83d9ace7cf82
         });
       });
     }
