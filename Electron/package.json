@@ -1,6 +1,6 @@
 {
   "name": "peer-to-peer-downloader",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A client to download from a host (Peer to Perr)",
   "main": "dist/index.js",
   "scripts": {

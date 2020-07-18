@@ -10,7 +10,9 @@
     "pack": "node . pack",
     "update": "npm update && cd Electron && npm update && cd .. && cd Server && npm update",
     "test": "cd Electron && node . test",
-    "release": "node . release"
+    "release": "node . release",
+    "winpack" : "node . winpack",
+    "cleanup" : "node . cleanup"
   },
   "author": "",
   "license": "ISC",
@@ -25,5 +27,8 @@
     "ora": "^4.0.4",
     "targz": "^1.0.1",
     "zip-dir": "^1.0.2"
+  },
+  "devDependencies": {
+    "electron-winstaller": "^4.0.1"
   }
 }

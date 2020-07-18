@@ -9,6 +9,8 @@ const meow = require('meow');
 const zipDir = require('zip-dir');
 const targz = require('targz');
 const async = require('async');
+const package = require("./package.json");
+const electronInstaller = require('electron-winstaller');
 const commandExists = require("command-exists");
 var isWin = require('os').platform().indexOf('win') > -1;
 
@@ -196,7 +198,9 @@ if(input == "pack") {
           platform: toPackage.Os,
           arch: "all",
           icon: "./Electron/icon.ico",
-          overwrite: true
+          overwrite: true,
+          appVersion: package.version,
+          buildVersion: package.version
         }).then(() => {
           spinner.stop();
           console.log(chalk.cyan("-") + chalk.white(` Electron was packaged to ` + chalk.green(path.resolve(electronOut))));
@@ -210,6 +214,42 @@ if(input == "pack") {
     } else {
       console.log(error.stack);
     }
+  });
+}
+
+if(input == "cleanup") {
+  let spinner = getSpinner("Deleting the packaged folder...");
+  let electronDir = path.join(process.cwd(), "Electron");
+  let packagedDir = path.join(electronDir, "packaged");
+  spinner.start();
+  fs.rmdirSync(packagedDir, {recursive: true});
+
+  spinner.stop();
+  console.log(chalk.cyan("-") + chalk.white(` Cleaned up!`));
+}
+
+if(input == "winpack") {
+  let spinner = getSpinner("Creating installer...");
+  spinner.start();
+
+  let electronDir = path.join(process.cwd(), "Electron");
+  let loadingGif = path.join(electronDir, "loading.gif");
+  let out = path.join(electronDir, "packaged");
+  let appDir = path.join(out, "peer-to-peer-downloader-win32-x64");
+
+  electronInstaller.createWindowsInstaller({
+    appDirectory: appDir,
+    outputDirectory: out,
+    authors: 'sshcrack',
+    exe: 'peer-to-peer-downloader.exe',
+    loadingGif : loadingGif,
+    setupExe: "installer.exe"
+  }).then(res => {
+    spinner.stop();
+    console.log(chalk.cyan("-") + chalk.white(` Created installer!`));
+  }).catch(err => {
+    spinner.stop();
+    console.log(chalk.cyan("-") + chalk.white(` Error ${chalk.red(err.message)}!`));
   });
 }
 
