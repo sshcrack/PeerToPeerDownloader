@@ -12,6 +12,10 @@
 ### Package
 > `$ npm run pack`
 
+### Generate Setup (ONLY WINDOWS SUPPORTED YET)
+> #### Make sure you packaged the application
+> `$ npm run winpack`
+
 ## Installation
 
 > To install the Modules needed just run `$ npm install`. This will install the modules for Electron and for the Server

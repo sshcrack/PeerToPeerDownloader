@@ -5,6 +5,7 @@ const path = require('path');
 const packager = require('electron-packager');
 const chalk = require('chalk');
 const fs = require('fs');
+const {promises} = require('fs');
 const meow = require('meow');
 const zipDir = require('zip-dir');
 const targz = require('targz');
@@ -222,10 +223,17 @@ if(input == "cleanup") {
   let electronDir = path.join(process.cwd(), "Electron");
   let packagedDir = path.join(electronDir, "packaged");
   spinner.start();
-  fs.rmdirSync(packagedDir, {recursive: true});
+  console.log("Cleaning up", packagedDir);
+  promises.rmdir(packagedDir).then(res => {
+    fs.mkdirSync(spinner);
 
-  spinner.stop();
-  console.log(chalk.cyan("-") + chalk.white(` Cleaned up!`));
+    spinner.stop();
+    console.log(chalk.cyan("-") + chalk.white(` Cleaned up!`));
+  }).catch(err => {
+    console.error(err);
+    spinner.stop();
+  })
+
 }
 
 if(input == "winpack") {

@@ -4,6 +4,7 @@ var electron_1 = require("electron");
 var Store = require("electron-store");
 var path = require("path");
 var ElectronPath = path.join(__dirname, "..");
+var icon = path.join(ElectronPath, "icon.ico");
 var store = new Store();
 var windows = [];
 console.log("Starting Electron...");
@@ -46,6 +47,7 @@ function createWindow() {
             preload: path.join(__dirname, "preload.js")
         },
         width: 800,
+        icon: icon,
         title: "peer-to-peer Downloader"
     });
     mainWindow.setMenuBarVisibility(false);

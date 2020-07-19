@@ -11,8 +11,8 @@
     "update": "npm update && cd Electron && npm update && cd .. && cd Server && npm update",
     "test": "cd Electron && node . test",
     "release": "node . release",
-    "winpack" : "node . winpack",
-    "cleanup" : "node . cleanup"
+    "winpack": "node . winpack",
+    "cleanup": "node . cleanup"
   },
   "author": "",
   "license": "ISC",
@@ -24,7 +24,7 @@
     "glob": "^7.1.6",
     "inquirer": "^7.3.2",
     "meow": "^7.0.1",
-    "ora": "^4.0.4",
+    "ora": "^4.0.5",
     "targz": "^1.0.1",
     "zip-dir": "^1.0.2"
   },

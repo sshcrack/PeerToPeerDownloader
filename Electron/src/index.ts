@@ -2,7 +2,6 @@ import { app, BrowserWindow, clipboard, dialog, FileFilter, ipcMain, SaveDialogS
 import * as Store from "electron-store";
 import * as path from "path";
 let ElectronPath = path.join(__dirname, "..");
-let icon = path.join(ElectronPath, "icon.ico");
 
 const store = new Store();
 
@@ -60,7 +59,6 @@ function createWindow() {
       preload: path.join(__dirname, "preload.js"),
     },
     width: 800,
-    icon: icon,
     title: "peer-to-peer Downloader"
   });
 
