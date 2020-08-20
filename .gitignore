@@ -1,7 +1,7 @@
-Electron\node_modules
-Electron\dist
-Electron\packaged
-Server\node_modules
-Server\dist
+Electron/node_modules
+Electron/dist
+Electron/packaged
+Server/node_modules
+Server/dist
 node_modules
 Release
