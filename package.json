@@ -26,7 +26,7 @@
     "meow": "^7.0.1",
     "ora": "^4.0.5",
     "targz": "^1.0.1",
-    "zip-dir": "^1.0.2"
+    "zip-dir": "^2.0.0"
   },
   "devDependencies": {
     "electron-winstaller": "^4.0.1"
