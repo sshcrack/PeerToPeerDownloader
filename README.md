@@ -9,6 +9,10 @@
 ### Start
 > `$ npm start`
 
+## Installation
+
+> To install the Modules needed just run `$ npm install`. This will install the modules for Electron and for the Server
+
 ### Package
 > `$ npm run pack`
 
@@ -16,6 +20,3 @@
 > #### Make sure you packaged the application
 > `$ npm run winpack`
 
-## Installation
-
-> To install the Modules needed just run `$ npm install`. This will install the modules for Electron and for the Server
