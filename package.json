@@ -29,6 +29,6 @@
     "zip-dir": "^1.0.2"
   },
   "devDependencies": {
-    "electron-winstaller": "^4.0.1"
+    "electron-winstaller": "^4.0.2"
   }
 }
