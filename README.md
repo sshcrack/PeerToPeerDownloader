@@ -1,3 +1,6 @@
+⚠️ This project is no longer maintained. Be careful, there might be secruity issues ⚠️
+
+
 # Peer to Peer Downloader
 
 ![CI](https://github.com/sshcrack/PeerToPeerDownloader/workflows/CI/badge.svg)
