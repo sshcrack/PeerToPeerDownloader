@@ -14,7 +14,7 @@
   "author": "sshcraCK",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^9.3.1",
+    "electron": "^13.6.6",
     "tslint": "^6.1.2",
     "typescript": "^3.9.6"
   },
