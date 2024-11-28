@@ -21,7 +21,7 @@
     "chalk": "^4.1.0",
     "command-exists": "^1.2.9",
     "electron-packager": "^15.0.0",
-    "glob": "^7.1.6",
+    "glob": "^7.1.7",
     "inquirer": "^7.3.2",
     "meow": "^7.0.1",
     "ora": "^4.0.5",
